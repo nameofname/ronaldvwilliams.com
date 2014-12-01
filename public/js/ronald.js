@@ -1,11 +1,3 @@
-//$(document).ready(function () {
-//    $( ".move" ).animate({
-//        left: "+=300",
-//        height: "toggle"
-//        }, 5000, function() {
-//    });
-//});
-
 $(document).ready(function () {
     var done = false;
 
