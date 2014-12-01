@@ -12,7 +12,7 @@
     }
 
     /**
-     * Plots a circle around the user's mouse. 
+     * Plots a circle around the user's mouse.
      * @param Ux
      * @param Uy
      */
@@ -31,9 +31,9 @@
 
 
     $(document).ready(function () {
-        $('body').click(function (e) {
-            var x = e.pageX;
-            var y = e.pageY;
+        $('.container').click(function (e) {
+            var x = e.offsetX;
+            var y = e.offsetY;
             drawCircle(x, y);
         });
     });
