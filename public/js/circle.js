@@ -31,9 +31,9 @@
 
 
     $(document).ready(function () {
-        $('.container').click(function (e) {
-            var x = e.offsetX;
-            var y = e.offsetY;
+        $(document).click(function (e) {
+            var x = e.pageX;
+            var y = e.pageY;
             drawCircle(x, y);
         });
     });
