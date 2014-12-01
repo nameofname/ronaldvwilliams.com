@@ -21,4 +21,5 @@
         }
     }
 
+    window.drawCircle = drawCircle;
 })();
