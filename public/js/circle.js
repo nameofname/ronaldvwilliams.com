@@ -11,15 +11,31 @@
         $('body').append(point);
     }
 
-
-    function drawCircle () {
+    /**
+     * Plots a circle around the user's mouse. 
+     * @param Ux
+     * @param Uy
+     */
+    function drawCircle (Ux, Uy) {
         var y;
+        Ux = Ux - 50;
+
         for (var x=-50; x<= 50; x++) {
             y = Math.sqrt((50*50) - (x*x));
-            _plot(x, y);
-            _plot(x, (y*-1));
+            var currX = Ux + x;
+
+            _plot(currX, (Uy + y));
+            _plot(currX, (Uy - y));
         }
     }
 
-    window.drawCircle = drawCircle;
+
+    $(document).ready(function () {
+        $('body').click(function (e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            drawCircle(x, y);
+        });
+    });
+
 })();
