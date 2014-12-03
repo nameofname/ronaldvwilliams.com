@@ -2,7 +2,6 @@
     "use strict";
 
     function _plot(x, y) {
-        x = x + 100; y = y + 100;
         var point = $('<div>').text('.').css({
             position : 'absolute',
             left : x,
@@ -12,11 +11,12 @@
     }
 
     /**
-     * Plots a circle around the user's mouse.
+     * Plots a circle around the user's mouse. --- works by calculating Y and steadily incrementing X. Because of this
+     * the circle is denser at the top and bottom and lighter on the sides.
      * @param Ux
      * @param Uy
      */
-    function drawCircle (Ux, Uy) {
+    function drawCircle_basedOnX (Ux, Uy) {
         var y;
         Ux = Ux - 50;
 
@@ -30,8 +30,21 @@
     }
 
 
+    function drawCircle (Ux, Uy, rad) {
+        var rad = rad || 50;
+
+        for (var angle = 0; angle <=360; angle+=10) {
+            var x = Math.cos(angle) * rad;
+            var y = Math.sin(angle) * rad;
+
+            _plot((Ux + x), (Uy + y));
+            _plot((Ux + x), (Uy - y));
+        }
+    }
+
+
     $(document).ready(function () {
-        $(document).click(function (e) {
+        $('body').click(function (e) {
             var x = e.pageX;
             var y = e.pageY;
             drawCircle(x, y);
