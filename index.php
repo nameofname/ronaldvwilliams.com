@@ -4,7 +4,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!--<link rel='stylesheet' href='/public/css/ronald/css' />-->
 
-    <?php require(getcwd() . '/inc/favicon.php'); ?>
+    <?php require(dirname(__FILE__) . '/inc/favicon.php'); ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/public/js/ronald.js"></script>
