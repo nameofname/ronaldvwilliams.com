@@ -3,6 +3,9 @@
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css' />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!--<link rel='stylesheet' href='/public/css/ronald/css' />-->
+
+    <?php require(__DIR__ . '/inc/favicon.php'); ?>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/public/js/ronald.js"></script>
     <script src="/public/js/circle.js"></script>
