@@ -1,0 +1,152 @@
+<html>
+<head>
+    <title>All the morty data</title>
+    <script type="text/javascript" src="https://cdn.rawgit.com/nameofname/ronaldvwilliams.com/master/public/mortys/mortyDataSorted-v2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Pock Mortys Full list of mortys ranked</h1>
+    <p>All data presented on this page was derived from the tables on the official pocket mortys website
+        <a href="https://pocketmortys.net/mortys/">here on pocketmortys.net</a>
+    </p>
+    <p>I will do my best to update the content here on time, no guarantees. </p>
+
+    <h2>Archives : </h2>
+    <p>
+        To see a the archived list of mortys from older versions, see :
+        <br />
+        <a href="/mortys/mortys-1.2.html">Pocket Mortys Rankings v 1.2</a>
+        <br />
+        <a href="/mortys/mortys-1.3.html">Pocket Mortys Rankings v 1.3</a>
+    </p>
+
+    <h2>Meaning : </h2>
+
+    <p>
+        The combined score of each morty is his base HP plus the stat total. Mortys are ranked in order based on their
+        combined score.
+    </p>
+    <p>
+        I ignore the Base XP stat which is used to calculate how many experience points your mortys gain when you
+        battle a morty with that XP stat.
+    </p>
+    <p>
+        This data is meant as a guide for discovering which mortys are actually strongest within the game. When you
+        are starting out it's difficult to know that an evil rabbit morty is a weak ass POS, while shirt mortys which
+        initially seem weak combine to form rainbow shirt morty, one of the strongest possible paper type mortys (and
+        tough as hell to beat).
+    </p>
+    </p>
+        Please read on at the bottom of the page for more advice / tips.
+    <p>
+    <hr />
+
+    <table class="table"><thead></thead><tbody></tbody></table>
+
+    <h2>Advice :</h2>
+    <p>
+        Disclaimer : knowing a morty's combined score does not guarantee it will win in battle against another morty of
+        lower or comparable score. Other factors need to be accounted for such as :
+    <ul>
+        <li>does this morty have any special attacks (ie. paralyze)</li>
+        <li>what is the morty's strongest attack</li>
+        <li>obviously types are important as well</li>
+    </ul>
+    </p>
+    <p>
+        For example, even though OTM (one true morty) has the highest stats and HP overall, he doesn't gain a strong
+        offensive attack until level 42 (golden touch). Many users are initially dissappointed with their OTM and
+        abandon him, not knowing he ultimately becomes much stronger than any other morty in the game.
+    </p>
+    <p>
+        Mortys that are evolved using level up mega seeds or by combinig are generally weaker than mortys you level up
+        by battling. My best advice on how to trounce everyone and everything in the entire game is as follows :
+        <ul>
+            <li>Catch the strongest mortys you can early in the game and level them up by battling.</li>
+            <li>eg. If you are lucky enough to find a hammer head morty early on, stick with him.</li>
+            <li>Basically any morty in the top ~20 on this page should qualify.</li>
+            <li>Do not neglect your regular morty, he can't be taken off your team</li>
+            <li>Level up mega seeds are pretty much useless, instead choose normal defense / attack / speed seeds</li>
+            <li>This last bit is works out because :
+                <ol>
+                    <li>As I said level up seeds produce poorer results on the whole and</li>
+                    <li>Stat increasing seeds gains stick with your morty even as it levels up</li>
+                </ol>
+            </li>
+            <li>Since you can't remove regular morty from your team, use every stat increasing seed you get on him -
+            except level up seeds, you need them to hatch OTM.</li>
+            <li>Once you can buy stat increasing seeds start spending all your extra dough on those suckers and make
+            your normal morty invincible. </li>
+            <li>I believe these become available after about 20 badges.
+                See <a href="https://pocketmortys.net/items">the items section here on pocketmortys.net</a> for details.</li>
+        </ul>
+    </p>
+    <p>
+        Admittedly, this strategy is tough to follow in the first couple levels when you have nothing, but it helps
+        a lot once you get cooking.
+    </p>
+    <p>
+        Similarly after you have beat the game and are probably flush with schmeckles you can buy
+        all the stat increasing seeds you need and make any morty tough as hell.
+    </p>
+    <p>
+        Want to know what my deck is after all this research? SURE! Glad you asked. My current deck is not my
+        <i>ideal</i> deck, but it's pretty damn good :
+        <ul>
+            <li>Morty (fully souped up with stat increasing seeds)</li>
+            <li>OTM</li>
+            <li>Cowboy Morty</li>
+            <li>Psychokinetic Morty</li>
+            <li>Super Unicorn Morty</li>
+        </ul>
+    </p>
+
+</div>
+
+<script type="text/javascript">
+    console.log(sorted);
+
+    var tbody = document.getElementsByTagName('tbody')[0];
+    var thead = document.getElementsByTagName('thead')[0];
+    var frag = document.createDocumentFragment();
+
+    // create the header row :
+    var headTr = document.createElement('tr');
+    var headTd1 = document.createElement('td');
+    headTd1.innerText = 'rank';
+    headTr.appendChild(headTd1);
+
+    for (var key in sorted[0]) {
+        var headTd = document.createElement('td');
+        headTd.innerText = key;
+        headTr.appendChild(headTd);
+    }
+    thead.appendChild(headTr);
+
+    for (var i = sorted.length-1; i > -1; i--) {
+        var obj = sorted[i];
+        var tr = document.createElement('tr');
+
+        var td1 = document.createElement('td');
+        td1.innerText = sorted.length - i;
+        tr.appendChild(td1);
+
+        for (var key in obj) {
+            var val = obj[key];
+            var td = document.createElement('td');
+            td.innerText = val;
+            tr.appendChild(td);
+        }
+
+        frag.appendChild(tr);
+    }
+
+    tbody.appendChild(frag);
+
+</script>
+</body>
+</html>
