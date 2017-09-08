@@ -4,7 +4,7 @@
 
     const _dot = (x, y) => $(`
         <svg height="8" width="8" x="${x}" y="${y}">
-            <circle cx="3.5" cy="3.5" r="3.5" />
+            <circle cx="3" cy="3" r="2" />
         </svg>
     `);
 
@@ -12,7 +12,6 @@
         const point = _dot(x, y);
         $('#DotCanvas').append(point);
     }
-
 
     /**
      * Helper function to get (X, Y) coordinates for 1 point in a circle - given an angle, and a radius.
