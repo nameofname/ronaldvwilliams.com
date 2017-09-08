@@ -2,7 +2,11 @@
 
 (function () {
 
-    const _dot = (x, y) => $(`<circle cx="${x}" cy="${y}" r="10" fill="red" />`);
+    const _dot = (x, y) => $(`
+        <svg height="8" width="8" x="${x}" y="${y}">
+            <circle cx="3.5" cy="3.5" r="3.5" />
+        </svg>
+    `);
 
     function _plot(x, y) {
         const point = _dot(x, y);
