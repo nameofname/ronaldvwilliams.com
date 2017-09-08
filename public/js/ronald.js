@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    var done = false;
+    let done = false;
 
     function _animate() {
         done = !done;
-        var pos = done ? '+=300':  '0';
+        const pos = done ? '+=300':  '0';
 
         $( ".move" ).animate({
             left: pos
