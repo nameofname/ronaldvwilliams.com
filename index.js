@@ -7,6 +7,8 @@ app.use(morgan('common'));
 
 app.set('port', (process.env.PORT || 5000));
 
+app.use('/favicons', express.static('favicons'))
+// app.use(express.static(__dirname + '/favicons'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/submodules/the-game-of-life/public/'));
 
