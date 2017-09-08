@@ -6,3 +6,19 @@
     border-top: 1px solid #ddd;
     padding: 3px 20px;
 }
+
+.nav li {
+    display:inline-block;
+    float: left;
+    padding: 0px 5px;
+}
+
+.nav li:before {
+    content: '\00a0\2022\00a0\00a0';
+    /*color:#999;*/
+    /*color:rgba(0,0,0,0.5);*/
+    font-size:11px;
+}
+.nav li:first-child:before {
+    content: '';
+}
