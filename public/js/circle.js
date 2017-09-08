@@ -1,8 +1,8 @@
+"use strict";
 (function () {
-    "use strict";
 
     function _plot(x, y) {
-        var point = $('<div>').text('.').css({
+        const point = $('<div>').text('.').css({
             position : 'absolute',
             left : x,
             top : y
@@ -18,13 +18,10 @@
      * @returns {{x: number, y: number}}
      * @private
      */
-    function _getXY (angle, radius) {
-        var x = Math.cos(angle) * radius;
-        var y = Math.sin(angle) * radius;
-        return {
-            x : x,
-            y : y
-        };
+    function _getCircleXY (angle, radius) {
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        return {x, y};
     }
 
     /**
@@ -34,12 +31,11 @@
      * @param Uy
      */
     function drawCircle_basedOnX (Ux, Uy) {
-        var y;
         Ux = Ux - 50;
 
-        for (var x=-50; x<= 50; x++) {
-            y = Math.sqrt((50*50) - (x*x));
-            var currX = Ux + x;
+        for (let x=-50; x<= 50; x++) {
+            const y = Math.sqrt((50*50) - (x*x));
+            const currX = Ux + x;
 
             _plot(currX, (Uy + y));
             _plot(currX, (Uy - y));
@@ -53,10 +49,10 @@
      * @param rad - the radius of the circle
      */
     function drawCircle (OffsetX, OffsetY, rad) {
-        var rad = rad || 50;
+        rad = rad || 50;
 
-        for (var angle = 0; angle <=360; angle++) {
-            var XY = _getXY(angle, rad);
+        for (let angle = 0; angle <=360; angle++) {
+            const XY = _getCircleXY(angle, rad);
             _plot((OffsetX + XY.x), (OffsetY + XY.y));
         }
     }
@@ -69,11 +65,11 @@
      * @param top - boolean - true for top, false for bottom. Defaults to false.
      */
     function drawHalfCircle (OffsetX, OffsetY, rad, top) {
-        var rad = rad || 50;
+        rad = rad || 50;
         top = top || false;
 
-        for (var angle = 0; angle <= 360; angle++) {
-            var XY = _getXY(angle, rad);
+        for (let angle = 0; angle <= 360; angle++) {
+            const XY = _getCircleXY(angle, rad);
 
             if (top) {
                 XY.y = XY.y >= 0 ? (XY.y * -1) : XY.y;
@@ -102,19 +98,17 @@
     // Set up event binding to draw a circle every time the user clicks the document.
     $(document).ready(function () {
         $('body').click(function (e) {
-            var x = e.pageX;
-            var y = e.pageY;
-            drawCircle(x, y);
+            drawCircle(e.pageX, e.pageY);
         });
     });
 
 
     // Set up event binding to draw a face every time the user types in 1, 2, 3
-    var curArr = [];
+    let curArr = [];
     $(document).on('keypress', function (e) {
 
-        var keyArr = [49, 50,51];
-        var currKey = keyArr[curArr.length];
+        const keyArr = [49, 50,51];
+        const currKey = keyArr[curArr.length];
 
         if (e.which = currKey) {
             curArr.push(currKey);
