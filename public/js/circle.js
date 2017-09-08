@@ -55,7 +55,7 @@
     function drawCircle (OffsetX, OffsetY, rad) {
         var rad = rad || 50;
 
-        for (var angle = 0; angle <=360; angle+=1) {
+        for (var angle = 0; angle <=360; angle++) {
             var XY = _getXY(angle, rad);
             _plot((OffsetX + XY.x), (OffsetY + XY.y));
         }
@@ -72,7 +72,7 @@
         var rad = rad || 50;
         top = top || false;
 
-        for (var angle = 0; angle <= 360; angle+=1) {
+        for (var angle = 0; angle <= 360; angle++) {
             var XY = _getXY(angle, rad);
 
             if (top) {
@@ -89,11 +89,13 @@
      * Draws a face on the document using half circle and full circle draw functions.
      */
     function drawFace () {
-        drawCircle(450, 100, 30);
-        drawCircle(750, 100, 30);
-        drawCircle(450, 100, 5);
-        drawCircle(750, 100, 5);
-        drawHalfCircle(600, 200, 200, false);
+        // TODO ! plan the face in the middle of the page regardless of page width / height.
+        const center = $('body').width() / 2;
+        drawCircle(center - 165 , 100, 30);
+        drawCircle(center - 165, 100, 5);
+        drawCircle(center + 165, 100, 30);
+        drawCircle(center + 165, 100, 5);
+        drawHalfCircle(center, 200, 200, false);
     }
 
 

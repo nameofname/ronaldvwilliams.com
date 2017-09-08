@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Personal website of ronald v williams",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nameofname/ronaldvwilliams.com.git"
@@ -19,6 +15,15 @@
   "homepage": "https://github.com/nameofname/ronaldvwilliams.com",
   "dependencies": {
     "ejs": "^2.3.4",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0"
+  },
+  "scripts": {
+    "dev": "./node_modules/.bin/nodemon ./index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
