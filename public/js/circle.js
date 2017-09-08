@@ -1,13 +1,12 @@
 "use strict";
+
 (function () {
 
+    const _dot = (x, y) => $(`<circle cx="${x}" cy="${y}" r="10" fill="red" />`);
+
     function _plot(x, y) {
-        const point = $('<div>').text('.').css({
-            position : 'absolute',
-            left : x,
-            top : y
-        }).css('font-size', 20).addClass('dot');
-        $('body').append(point);
+        const point = _dot(x, y);
+        $('#DotCanvas').append(point);
     }
 
 
@@ -25,7 +24,7 @@
     }
 
     /**
-     * Plots a circle around the user's mouse. --- works by calculating Y and steadily incrementing X. Because of this
+     * Plots a circle by calculating Y and steadily incrementing X. Because of this
      * the circle is denser at the top and bottom and lighter on the sides.
      * @param Ux
      * @param Uy
@@ -49,9 +48,9 @@
      * @param rad - the radius of the circle
      */
     function drawCircle (OffsetX, OffsetY, rad) {
-        rad = rad || 50;
+        rad = rad || 100;
 
-        for (let angle = 0; angle <=360; angle++) {
+        for (let angle = 0; angle <=360; angle += 10) {
             const XY = _getCircleXY(angle, rad);
             _plot((OffsetX + XY.x), (OffsetY + XY.y));
         }
@@ -68,7 +67,7 @@
         rad = rad || 50;
         top = top || false;
 
-        for (let angle = 0; angle <= 360; angle++) {
+        for (let angle = 0; angle <= 360; angle += 10) {
             const XY = _getCircleXY(angle, rad);
 
             if (top) {
