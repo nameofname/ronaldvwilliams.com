@@ -126,26 +126,25 @@
         $('body').click(function (e) {
             drawCircleDotByDot(e.pageX, e.pageY);
         });
-    });
 
+        // Set up event binding to draw a face every time the user types in 1, 2, 3
+        let curArr = [];
+        $(document).on('keypress', function (e) {
 
-    // Set up event binding to draw a face every time the user types in 1, 2, 3
-    let curArr = [];
-    $(document).on('keypress', function (e) {
+            const keyArr = [49, 50,51];
+            const currKey = keyArr[curArr.length];
 
-        const keyArr = [49, 50,51];
-        const currKey = keyArr[curArr.length];
+            if (e.which = currKey) {
+                curArr.push(currKey);
+            } else {
+                curArr = [];
+            }
 
-        if (e.which = currKey) {
-            curArr.push(currKey);
-        } else {
-            curArr = [];
-        }
-
-        if (curArr.length === 3) {
-            drawFace();
-            curArr = [];
-        }
+            if (curArr.length === 3) {
+                drawFace();
+                curArr = [];
+            }
+        });
     });
 
 })();
