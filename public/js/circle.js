@@ -73,7 +73,7 @@ function drawCircleDotByDot (OffsetX, OffsetY) {
             angle += 10;
             setTimeout(() => {
                 _draw(OffsetX, OffsetY);
-            }, 30);
+            }, 15);
 
         } else {
             angle = 0;
