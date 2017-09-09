@@ -13,6 +13,8 @@
         $('#DotCanvas').append(point);
     }
 
+    const _toRadians = angle => (angle * (Math.PI / 180));
+
     /**
      * Helper function to get (X, Y) coordinates for 1 point in a circle - given an angle, and a radius.
      * @param angle
@@ -21,6 +23,7 @@
      * @private
      */
     function _getCircleXY (angle, radius) {
+        angle = _toRadians(angle);
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
         return {x, y};
@@ -51,12 +54,34 @@
      * @param rad - the radius of the circle
      */
     function drawCircle (OffsetX, OffsetY, rad) {
-        rad = rad || 100;
+        rad = rad || 200;
 
         for (let angle = 0; angle <=360; angle += 10) {
             const XY = _getCircleXY(angle, rad);
             _plot((OffsetX + XY.x), (OffsetY + XY.y));
         }
+    }
+
+    function drawCircleDotByDot (OffsetX, OffsetY) {
+        let angle = 0;
+
+        function _draw () {
+            const rad = 200;
+
+            if (angle < 360) {
+                const XY = _getCircleXY(angle, rad);
+                _plot((OffsetX + XY.x), (OffsetY + XY.y));
+                angle += 10;
+                setTimeout(() => {
+                    _draw(OffsetX, OffsetY);
+                }, 30);
+
+            } else {
+                angle = 0;
+            }
+        }
+
+        _draw();
     }
 
     /**
@@ -70,7 +95,7 @@
         rad = rad || 50;
         top = top || false;
 
-        for (let angle = 0; angle <= 360; angle += 10) {
+        for (let angle = 0; angle <= 180; angle += 10) {
             const XY = _getCircleXY(angle, rad);
 
             if (top) {
@@ -87,7 +112,6 @@
      * Draws a face on the document using half circle and full circle draw functions.
      */
     function drawFace () {
-        // TODO ! plan the face in the middle of the page regardless of page width / height.
         const center = $('body').width() / 2;
         drawCircle(center - 165 , 100, 30);
         drawCircle(center - 165, 100, 5);
@@ -100,7 +124,7 @@
     // Set up event binding to draw a circle every time the user clicks the document.
     $(document).ready(function () {
         $('body').click(function (e) {
-            drawCircle(e.pageX, e.pageY);
+            drawCircleDotByDot(e.pageX, e.pageY);
         });
     });
 
