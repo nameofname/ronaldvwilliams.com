@@ -2,7 +2,7 @@
 
 
 const _dot = (x, y) => $(`
-        <svg height="8" width="8" x="${x}" y="${y}">
+        <svg class="dot" height="8" width="8" x="${x}" y="${y}">
             <circle cx="3" cy="3" r="2" />
         </svg>
     `);

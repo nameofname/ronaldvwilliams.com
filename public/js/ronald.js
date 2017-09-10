@@ -1,8 +1,10 @@
 "use strict";
 
 const {drawFace, drawCircleDotByDot} = require('./circle');
+const konami = require('konamiLetters');
+const keyTracker = require('konamiLetters/dist/keyTracker');
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
 
     // set up moving space ship.
     let done = false;
@@ -25,24 +27,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         drawCircleDotByDot(e.pageX, e.pageY);
     });
 
-    // Set up event binding to draw a face every time the user types in 1, 2, 3
-    let curArr = [];
-    $(document).on('keypress', function (e) {
+    keyTracker([49, 50,51], drawFace); // 1, 2, 3
 
-        const keyArr = [49, 50,51];
-        const currKey = keyArr[curArr.length];
-
-        if (e.which = currKey) {
-            curArr.push(currKey);
-        } else {
-            curArr = [];
-        }
-
-        if (curArr.length === 3) {
-            drawFace();
-            curArr = [];
-        }
-    });
+    konami(null, null, '.dot');
 
 });
 
