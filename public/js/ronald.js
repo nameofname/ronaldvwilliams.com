@@ -1,8 +1,9 @@
 "use strict";
 
 const {drawFace, drawCircleDotByDot} = require('./circle');
-const konami = require('konamiLetters');
 const charCodeSequence = require('char-code-sequence');
+const konami = require('konami-letters');
+const xPattern = require('konami-letters/dist/patterns/x');
 
 document.addEventListener("DOMContentLoaded", function() {
 
