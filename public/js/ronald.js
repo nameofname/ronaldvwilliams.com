@@ -2,7 +2,7 @@
 
 const {drawFace, drawCircleDotByDot} = require('./circle');
 const konami = require('konamiLetters');
-const keyTracker = require('konamiLetters/dist/keyTracker');
+const charCodeSequence = require('char-code-sequence');
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -27,9 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
         drawCircleDotByDot(e.pageX, e.pageY);
     });
 
-    keyTracker([49, 50,51], drawFace); // 1, 2, 3
+    charCodeSequence([82, 79, 78, 32, 87, 73, 76, 76, 73, 65, 77, 83], drawFace); // my name
 
-    konami(null, null, '.dot');
+    konami(null, null);
 
+    charCodeSequence([49, 50,51], drawFace);
 });
 
