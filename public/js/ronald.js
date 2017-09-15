@@ -1,6 +1,6 @@
 "use strict";
 
-const {drawFace, drawCircleDotByDot} = require('./circle');
+const {drawFace, drawRadiatingCircles} = require('./circle');
 const charCodeSequence = require('char-code-sequence');
 const konami = require('konami-letters');
 const xPattern = require('konami-letters/src/patterns/letter_x');
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // set up circle functions
     $('body').click(function (e) {
-        drawCircleDotByDot(e.pageX, e.pageY);
+        drawRadiatingCircles(e.pageX, e.pageY);
     });
 
     charCodeSequence([82, 79, 78, 32, 87, 73, 76, 76, 73, 65, 77, 83], drawFace); // my name

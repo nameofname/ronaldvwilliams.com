@@ -10,6 +10,9 @@ const _dot = (x, y) => $(`
 function _plot(x, y) {
     const point = _dot(x, y);
     $('#DotCanvas').append(point);
+    setTimeout(() => {
+        point.remove();
+    }, 2000);
 }
 
 const _toRadians = angle => (angle * (Math.PI / 180));
@@ -61,11 +64,11 @@ function drawCircle (OffsetX, OffsetY, rad) {
     }
 }
 
-function drawCircleDotByDot (OffsetX, OffsetY) {
+function _drawCircleDotByDot (OffsetX, OffsetY, radius, callback) {
     let angle = 0;
+    const rad = radius || 200;
 
     function _draw () {
-        const rad = 200;
 
         if (angle < 360) {
             const XY = _getCircleXY(angle, rad);
@@ -77,11 +80,22 @@ function drawCircleDotByDot (OffsetX, OffsetY) {
 
         } else {
             angle = 0;
+            if (typeof callback === 'function') {
+                callback();
+            }
         }
     }
 
     _draw();
 }
+
+const drawRadiatingCircles = (x, y, rad = 50) => {
+    _drawCircleDotByDot(x, y, rad, () => {
+        if (rad <= 150) {
+            drawRadiatingCircles(x, y, rad + 10);
+        }
+    });
+};
 
 /**
  *
@@ -122,7 +136,7 @@ function drawFace () {
 module.exports = {
     drawFace,
     drawHalfCircle,
-    drawCircleDotByDot,
+    drawRadiatingCircles,
     drawCircle,
     drawCircleBasedOnX
 };
