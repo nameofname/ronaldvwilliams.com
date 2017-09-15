@@ -14,10 +14,10 @@
   },
   "homepage": "https://github.com/nameofname/ronaldvwilliams.com",
   "dependencies": {
-    "char-code-sequence": "^0.0.1",
+    "char-code-sequence": "^0.0.3",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "konami-letters": "^0.0.1",
+    "konami-letters": "^0.0.4",
     "morgan": "^1.8.2",
     "webpack": "^3.5.6"
   },
