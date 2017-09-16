@@ -1,4 +1,13 @@
-$(document).ready(function () {
+"use strict";
+
+const {drawFace, drawRadiatingCircles} = require('./circle');
+const charCodeSequence = require('char-code-sequence');
+const konami = require('konami-letters');
+const xPattern = require('konami-letters/src/patterns/letter_x');
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // set up moving space ship.
     let done = false;
 
     function _animate() {
@@ -13,5 +22,15 @@ $(document).ready(function () {
     }
 
     _animate();
+
+    // set up circle functions
+    $('body').click(function (e) {
+        drawRadiatingCircles(e.pageX, e.pageY);
+    });
+
+    charCodeSequence([82, 79, 78, 32, 87, 73, 76, 76, 73, 65, 77, 83], drawFace); // my name
+    // charCodeSequence([49, 50, 49, 50, 51], drawFace); // 1, 2, 1, 2, 3
+
+    konami(null, xPattern);
 });
 
