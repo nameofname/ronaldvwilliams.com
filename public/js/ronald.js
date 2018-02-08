@@ -2,7 +2,7 @@
 
 const {drawFace, drawRadiatingCircles} = require('./circle');
 const charCodeSequence = require('char-code-sequence');
-const konami = require('konami-letters');
+// const konami = require('konami-letters');
 const xPattern = require('konami-letters/src/patterns/letter_x');
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -28,9 +28,13 @@ document.addEventListener("DOMContentLoaded", function() {
         drawRadiatingCircles(e.pageX, e.pageY);
     });
 
-    charCodeSequence([82, 79, 78, 32, 87, 73, 76, 76, 73, 65, 77, 83], drawFace); // my name
-    // charCodeSequence([49, 50, 49, 50, 51], drawFace); // 1, 2, 1, 2, 3
+    const nameArr = [ 114, 111, 110, 32, 119, 105, 108, 108, 105, 97, 109, 115];
 
-    konami(null, xPattern);
+    const findMatch = charCodeSequence(nameArr, drawFace); // my name
+    // const findMatch = charCodeSequence([49, 50, 49, 50, 51], drawFace); // 1, 2, 1, 2, 3
+
+    findMatch.onChange(({ currArr }) => console.log(currArr.map(code => String.fromCharCode(code))));
+
+    // konami(null, xPattern);
 });
 
