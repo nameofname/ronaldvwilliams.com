@@ -1,18 +1,20 @@
 "use strict";
 
 
-const _dot = (x, y) => $(`
-        <svg class="dot" height="8" width="8" x="${x}" y="${y}">
+const _dot = (x, y, fill = '') => $(`
+        <svg class="dot" height="8" width="8" x="${x}" y="${y}" fill="${fill}">
             <circle cx="3" cy="3" r="2" />
         </svg>
     `);
 
-function _plot(x, y) {
-    const point = _dot(x, y);
+function _plot(x, y, fill, remove = true) {
+    const point = _dot(x, y, fill);
     $('#DotCanvas').append(point);
-    setTimeout(() => {
-        point.remove();
-    }, 2000);
+    if (remove) {
+        setTimeout(() => {
+            point.remove();
+        }, 2000);
+    }
 }
 
 const _toRadians = angle => (angle * (Math.PI / 180));
@@ -64,7 +66,7 @@ function drawCircle (OffsetX, OffsetY, rad) {
     }
 }
 
-function _drawCircleDotByDot (OffsetX, OffsetY, radius, callback) {
+function _drawCircleDotByDot (OffsetX, OffsetY, radius, fill, callback) {
     let angle = 0;
     const rad = radius || 200;
 
@@ -72,11 +74,11 @@ function _drawCircleDotByDot (OffsetX, OffsetY, radius, callback) {
 
         if (angle < 360) {
             const XY = _getCircleXY(angle, rad);
-            _plot((OffsetX + XY.x), (OffsetY + XY.y));
+            _plot((OffsetX + XY.x), (OffsetY + XY.y), fill);
             angle += 10;
             setTimeout(() => {
                 _draw(OffsetX, OffsetY);
-            }, 15);
+            }, 5);
 
         } else {
             angle = 0;
@@ -89,10 +91,22 @@ function _drawCircleDotByDot (OffsetX, OffsetY, radius, callback) {
     _draw();
 }
 
-const drawRadiatingCircles = (x, y, rad = 50) => {
-    _drawCircleDotByDot(x, y, rad, () => {
-        if (rad <= 150) {
-            drawRadiatingCircles(x, y, rad + 10);
+function _arrToColor(arr) {
+    return '#' + arr
+        .map(int => Number(int).toString(16))
+        .join('');
+};
+
+const drawRadiatingCircles = (x, y, rad = 50, colorArr) => {
+    rad = rad + 5;
+    if (!colorArr) {
+        colorArr = [0, 0, 0].map(z => 100 + Math.floor(Math.random() * 80));
+    }
+
+    _drawCircleDotByDot(x, y, rad, _arrToColor(colorArr), () => {
+        if (rad <= 80) {
+            colorArr = colorArr.map(int => (Math.random() > 0.5 || int >= (255 - 30)) ? int : int + 30);
+            drawRadiatingCircles(x, y, rad, colorArr);
         }
     });
 };

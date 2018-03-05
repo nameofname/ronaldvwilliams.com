@@ -1,9 +1,9 @@
 "use strict";
 
-const {drawFace, drawRadiatingCircles} = require('./circle');
+
+const { drawFace, drawRadiatingCircles } = require('./circle');
 const charCodeSequence = require('char-code-sequence');
-// const konami = require('konami-letters');
-const xPattern = require('konami-letters/src/patterns/letter_x');
+
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -29,12 +29,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const nameArr = [ 114, 111, 110, 32, 119, 105, 108, 108, 105, 97, 109, 115];
+    const nameClassArr = ['.name-r', '.name-o', '.name-n', null, '.name-w', '.name-i', '.name-l', '.name-l1', '.name-i1', '.name-a', '.name-m', '.name-s'];
+    const nameMatch = charCodeSequence(nameArr, drawFace); // my name
 
-    const findMatch = charCodeSequence(nameArr, drawFace); // my name
-    // const findMatch = charCodeSequence([49, 50, 49, 50, 51], drawFace); // 1, 2, 1, 2, 3
+    nameMatch.onChange(({ currArr }) => {
+        console.log('RONALD : nameArr');
+        const len = currArr.length;
+        nameClassArr.forEach((klass, idx) => {
+            const ele = document.querySelector(klass);
+            if (ele) {
+                ele.style.color = (idx + 1) <= len ? 'red' : 'black';
+            }
+        });
+    });
 
-    findMatch.onChange(({ currArr }) => console.log(currArr.map(code => String.fromCharCode(code))));
+    // // for testing : 
+    // const oneMatch = charCodeSequence([49, 50, 49, 50, 51], () => console.log('THE ONE TWO THREE THING HAPPENED!!!!!')); // 1, 2, 1, 2, 3
+    // oneMatch.onChange(({ currArr }) => {
+    //     console.log('let me try it : oneArr');
+    //     document.querySelector('.nav').innerText = currArr.map(letter => String.fromCharCode(letter))
+    // });
 
-    // konami(null, xPattern);
 });
 

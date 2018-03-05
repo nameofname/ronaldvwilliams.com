@@ -62,6 +62,10 @@ h1 {
     line-height: 1.4
 }
 
+span.name {
+    margin: 0px;
+    padding: 0px;
+}
 /* Functional / JS stuff ------------- */
 
 #DotCanvas {
