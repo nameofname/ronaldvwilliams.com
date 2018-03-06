@@ -4,23 +4,23 @@
 const { drawFace, drawRadiatingCircles } = require('./circle');
 const charCodeSequence = require('char-code-sequence');
 
+function getTextNodes() {
+    let node;
+    const nodes = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    while(node = walker.nextNode()) nodes.push(node);
+    return nodes;
+}
+  
+let animateRight = false;
+function _animate() {
+    animateRight = !animateRight;
+    $( ".move" ).animate({ left: (animateRight ? '+=300':  '0') }, 5000, _animate);
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 
     // set up moving space ship.
-    let done = false;
-
-    function _animate() {
-        done = !done;
-        const pos = done ? '+=300':  '0';
-
-        $( ".move" ).animate({
-            left: pos
-        }, 5000, function () {
-            _animate();
-        });
-    }
-
     _animate();
 
     // set up circle functions
@@ -50,5 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //     document.querySelector('.nav').innerText = currArr.map(letter => String.fromCharCode(letter))
     // });
 
+    window.der = getTextNodes()
 });
 
