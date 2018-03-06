@@ -57,12 +57,13 @@ function drawCircleBasedOnX (Ux, Uy) {
  * @param OffsetY - offset from top
  * @param rad - the radius of the circle
  */
-function drawCircle (OffsetX, OffsetY, rad) {
+function drawCircle (OffsetX, OffsetY, rad, fill) {
+    console.log('do circle', rad)
     rad = rad || 200;
 
     for (let angle = 0; angle <=360; angle += 10) {
         const XY = _getCircleXY(angle, rad);
-        _plot((OffsetX + XY.x), (OffsetY + XY.y));
+        _plot((OffsetX + XY.x), (OffsetY + XY.y), fill);
     }
 }
 
@@ -97,16 +98,35 @@ function _arrToColor(arr) {
         .join('');
 };
 
-const drawRadiatingCircles = (x, y, rad = 50, colorArr) => {
-    rad = rad + 5;
-    if (!colorArr) {
-        colorArr = [0, 0, 0].map(z => 100 + Math.floor(Math.random() * 80));
-    }
+function initialRandomColor() {
+    const colorArr = [0, 0, 0].map(z => 100 + Math.floor(Math.random() * 80));
+    const idx = Math.floor(Math.random() * 3);
+    colorArr[idx] += 80; // make the starting color brighter
+    colorArr[idx] = colorArr[idx] >= 255 ? 255 : colorArr[idx];
+    return colorArr;
+}
 
+function lightenColor(colorArr, increment = 30) {
+    // colors increasingly get lighter
+    return colorArr.map(int => (int >= (255 - increment)) ? int : int + increment);
+}
+
+function drawFireWork(x, y, rad = 0, colorArr = initialRandomColor()) {
+    console.log('firework')
+    rad = rad + 5;
+    drawCircle(x, y, rad, _arrToColor(colorArr));
+    if (rad <= 80) {
+        setTimeout(() => {
+            drawFireWork(x, y, rad, lightenColor(colorArr, 10));
+        }, 5);
+    }
+}
+
+function drawRadiatingCircles (x, y, rad = 50, colorArr = initialRandomColor()) {
+    rad = rad + 5;
     _drawCircleDotByDot(x, y, rad, _arrToColor(colorArr), () => {
         if (rad <= 80) {
-            colorArr = colorArr.map(int => (Math.random() > 0.5 || int >= (255 - 30)) ? int : int + 30);
-            drawRadiatingCircles(x, y, rad, colorArr);
+            drawRadiatingCircles(x, y, rad, lightenColor(colorArr));
         }
     });
 };
@@ -150,7 +170,8 @@ function drawFace () {
 module.exports = {
     drawFace,
     drawHalfCircle,
-    drawRadiatingCircles,
     drawCircle,
-    drawCircleBasedOnX
+    drawCircleBasedOnX,
+    drawRadiatingCircles,
+    drawFireWork
 };

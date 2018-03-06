@@ -1,7 +1,7 @@
 "use strict";
 
 
-const { drawFace, drawRadiatingCircles } = require('./circle');
+const { drawFace, drawRadiatingCircles, drawFireWork } = require('./circle');
 const charCodeSequence = require('char-code-sequence');
 
 function getTextNodes() {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // set up circle functions
     $('body').click(function (e) {
-        drawRadiatingCircles(e.pageX, e.pageY);
+        Math.random() < 0.5 ? drawRadiatingCircles(e.pageX, e.pageY) : drawFireWork(e.pageX, e.pageY);;
     });
 
     const nameArr = [ 114, 111, 110, 32, 119, 105, 108, 108, 105, 97, 109, 115];
