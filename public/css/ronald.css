@@ -66,6 +66,11 @@ span.name {
     margin: 0px;
     padding: 0px;
 }
+
+svg.svg-rocket {
+    width: 3em;
+}
+
 /* Functional / JS stuff ------------- */
 
 #DotCanvas {
