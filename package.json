@@ -28,6 +28,7 @@
   },
   "scripts": {
     "compile": "./node_modules/.bin/webpack",
+    "mkText": "node src/mkSvgs.js > views/partials/text.ejs",
     "postinstall": "yarn compile",
     "dev": "./node_modules/.bin/webpack --watch",
     "start": "node index.js",

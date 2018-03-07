@@ -51,6 +51,10 @@ h1 {
     margin-bottom: 10px;
 }
 
+.svg-container {
+    margin-bottom: 20px;
+}
+
 .small {
     font-size: 12px;
 }

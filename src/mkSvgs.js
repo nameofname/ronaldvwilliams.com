@@ -36,7 +36,7 @@ function normalSvg(string, fontSize = 14) {
     });
 }
 
-function open() { console.log('<div>') };
+function open() { console.log('<div class="svg-container">') };
 function close() { console.log('</div>') };
 
 
