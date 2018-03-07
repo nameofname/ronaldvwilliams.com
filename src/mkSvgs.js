@@ -1,6 +1,8 @@
 "use strict";
 
 const path = require('path');
+const fs = require('fs');
+const rocketSvg = fs.readFileSync(path.join(__dirname, '../views/partials/svg-rocket.ejs'), { encoding: 'utf8'});
 const toBoldSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/helveticaneue.otf'));
 const toThinSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/helveticaneue-thin.otf'));
 const toNormalSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/helveticaneue-normal.otf'));
@@ -58,6 +60,8 @@ close();open();
 console.log(trueSvg);
 close();open();
 console.log(proofSvg);
+close();console.log("<div class='move'>")
+console.log(rocketSvg);
 close();open();
 console.log(pewSvg);
 close();open();
