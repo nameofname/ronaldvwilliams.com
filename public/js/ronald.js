@@ -2,6 +2,7 @@
 
 
 const { drawFace, drawRadiatingCircles, drawFireWork } = require('./circle');
+const moveSpaceShip = require('./moveSpaceShip');
 const charCodeSequence = require('char-code-sequence');
 
 function getTextNodes() {
@@ -12,16 +13,10 @@ function getTextNodes() {
     return nodes;
 }
   
-let animateRight = false;
-function _animate() {
-    animateRight = !animateRight;
-    $( ".move" ).animate({ left: (animateRight ? '+=300':  '0') }, 5000, _animate);
-}
-
 document.addEventListener("DOMContentLoaded", function() {
 
     // set up moving space ship.
-    _animate();
+    moveSpaceShip();
 
     // set up circle functions
     $('body').click(function (e) {
