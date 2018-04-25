@@ -3,7 +3,6 @@
 
 const { drawFace, drawRadiatingCircles, drawFireWork } = require('./circle');
 const moveSpaceShip = require('./moveSpaceShip');
-// const charCodeSequence = require('char-code-sequence');
 const { listenKeypress, konami } = require('char-code-sequence');
 
 function getTextNodes() {
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         nameClassArr.forEach((klass, idx) => {
             const ele = document.querySelector(klass);
             if (ele) {
-                ele.style.color = (idx + 1) <= len ? 'red' : 'black';
+                ele.setAttribute("fill", (idx + 1) <= len ? 'red' : '#333');
             }
         });
     });
