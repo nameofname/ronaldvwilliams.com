@@ -1,5 +1,5 @@
 function getTextNodes() {
-    return document.querySelectorAll('.name')
+    return document.querySelectorAll('.header svg')
     let node;
     const nodes = [];
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
@@ -21,6 +21,7 @@ function explodeLetters() {
 
     textNodes.forEach((node, idx) => {
         node.style.position = 'relative';
+
         intervals[idx] = setInterval(() => {
             const { left, top } = getPosition(node);
             const newLeft = Math.random() > 0.5 ? (left + 10) : (left - 10);
@@ -28,8 +29,8 @@ function explodeLetters() {
 
             node.style.left = newLeft
             node.style.top = newTop
-            // node.setAttribute('style', `position: relative; left: ${newLeft}px; right: ${newRight}px;`);
-        }, 50);
+        }, 100);
+
         setTimeout(() => {
             console.log('le node', node)
             node.style.position = 'relative';
