@@ -24,11 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const nameArr = [ 114, 111, 110, 32, 119, 105, 108, 108, 105, 97, 109, 115];
-    const nameClassArr = ['.name-r', '.name-o', '.name-n', null, '.name-w', '.name-i', '.name-l', '.name-l1', '.name-i1', '.name-a', '.name-m', '.name-s'];
+    const nameClassArr = ['.name-r-1', '.name-o-1', '.name-n-1', null, '.name-w-1', '.name-i-1', '.name-l-1', '.name-l-2', '.name-i-2', '.name-a-1', '.name-m-1', '.name-s-1'];
     const nameMatch = listenKeypress(nameArr, drawFace); // my name
 
     nameMatch.onChange(({ currArr }) => {
-        console.log('RONALD : nameArr');
         const len = currArr.length;
         nameClassArr.forEach((klass, idx) => {
             const ele = document.querySelector(klass);
