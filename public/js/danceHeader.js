@@ -1,7 +1,6 @@
 const { randomColor } = require('./circle');
 
 function getTextNodes() {
-    return document.querySelectorAll('.header svg')
     let node;
     const nodes = [];
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
@@ -17,11 +16,11 @@ function getPosition(node) {
     return { left, top };
 }
 
-function explodeLetters() {
-    const textNodes = getTextNodes();
+function danceHeader() {
+    const svgs = document.querySelectorAll('.header svg')
     const intervals = [];
 
-    textNodes.forEach((node, idx) => {
+    svgs.forEach((node, idx) => {
         node.style.position = 'relative';
 
         intervals[idx] = setInterval(() => {
@@ -43,4 +42,4 @@ function explodeLetters() {
     });
 }  
 
-module.exports = explodeLetters;
+module.exports = danceHeader;
