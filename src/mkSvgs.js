@@ -12,7 +12,6 @@ function titleSvg(string) {
     const lower = string.toLowerCase();
     const idx = used[lower] ? ++used[lower] : 1;
     used[lower] = idx;
-    // console.log(lower, idx, used[lower], used)
     const className = ` name name-${lower}-${idx}`;
     return toBoldSVG.getSVG(string, {
         x: 0, y: 0, fontSize: 35, anchor: 'top', 
