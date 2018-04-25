@@ -34,7 +34,6 @@ function danceHeader() {
         }, 100);
 
         setTimeout(() => {
-            console.log('le node', node)
             node.style.position = '';
             node.firstElementChild.setAttribute('fill', '#333');
             clearInterval(intervals[idx]);
