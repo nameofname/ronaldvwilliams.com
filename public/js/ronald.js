@@ -1,18 +1,11 @@
 "use strict";
 
 
-const { drawFace, drawRadiatingCircles, drawFireWork } = require('./circle');
+const { drawRadiatingCircles, drawFireWork } = require('./circle');
+const explodeLetters = require('./explodeLetters');
 const moveSpaceShip = require('./moveSpaceShip');
 const { listenKeypress, konami } = require('char-code-sequence');
 
-function getTextNodes() {
-    let node;
-    const nodes = [];
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    while(node = walker.nextNode()) nodes.push(node);
-    return nodes;
-}
-  
 document.addEventListener("DOMContentLoaded", function() {
 
     // set up moving space ship.
@@ -23,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
         Math.random() < 0.5 ? drawRadiatingCircles(e.pageX, e.pageY) : drawFireWork(e.pageX, e.pageY);;
     });
 
-    const nameArr = [ 114, 111, 110, 32, 119, 105, 108, 108, 105, 97, 109, 115];
+    // const nameArr = [ 114, 111, 110, 32, 119, 105, 108, 108, 105, 97, 109, 115];
+    const nameArr = [ 114, 111]
     const nameClassArr = ['.name-r-1', '.name-o-1', '.name-n-1', null, '.name-w-1', '.name-i-1', '.name-l-1', '.name-l-2', '.name-i-2', '.name-a-1', '.name-m-1', '.name-s-1'];
-    const nameMatch = listenKeypress(nameArr, drawFace); // my name
+    const nameMatch = listenKeypress(nameArr, explodeLetters); // my name
 
     nameMatch.onChange(({ currArr }) => {
         const len = currArr.length;
@@ -44,12 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //     document.querySelector('.nav').innerText = currArr.map(letter => String.fromCharCode(letter))
     // });
 
-    window.der = getTextNodes()
-
-
-    const matchArray = [49, 50, 49, 50, 51]; // 1, 2, 1, 2, 3
-
-
+    // const matchArray = [49, 50, 49, 50, 51]; // 1, 2, 1, 2, 3
     const findMatch = listenKeypress([49, 50, 49, 50, 51], (currArr) => {
         document.querySelector('body').innerText = `You typed the following : ${currArr.map(String.fromCharCode)}`;
     });

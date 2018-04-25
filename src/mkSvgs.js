@@ -11,9 +11,10 @@ const used = {};
 function titleSvg(string) {
     const idx = used[string] ? used[string] + 1 : 1;
     used[string] = idx;
-    const className = `name name-${string.toLowerCase()}-${idx}`
+    const className = ` name name-${string.toLowerCase()}-${idx}`
     return toBoldSVG.getSVG(string, {
         x: 0, y: 0, fontSize: 35, anchor: 'top', 
+        class: 'getting-ronaldy',
         attributes: {
             fill: '#333',
             class: className
@@ -24,6 +25,7 @@ function titleSvg(string) {
 function thinSvg(string, fontSize) {
     return toThinSVG.getSVG(string, {
         x: 0, y: 0, fontSize, anchor: 'top', 
+        class: 'getting-ronaldy',
         attributes: {
             fill: '#333',
             "stroke-width": 0.3,
@@ -35,6 +37,7 @@ function thinSvg(string, fontSize) {
 function normalSvg(string, fontSize = 14) {
     return toNormalSVG.getSVG(string, {
         x: 0, y: 0, fontSize, anchor: 'top', 
+        class: 'getting-ronaldy',
         attributes: {
             fill: '#333'
         }
