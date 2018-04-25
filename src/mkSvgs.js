@@ -7,13 +7,17 @@ const toBoldSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/
 const toThinSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/helveticaneue-thin.otf'));
 const toNormalSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/helveticaneue-normal.otf'));
 
-
+const used = {};
 function titleSvg(string) {
+    const lower = string.toLowerCase();
+    const idx = used[lower] ? ++used[lower] : 1;
+    used[lower] = idx;
+    const className = ` name name-${lower}-${idx}`;
     return toBoldSVG.getSVG(string, {
         x: 0, y: 0, fontSize: 35, anchor: 'top', 
         attributes: {
             fill: '#333',
-            class: `name name-${string}`
+            class: className
         }
     });
 }
@@ -38,11 +42,11 @@ function normalSvg(string, fontSize = 14) {
     });
 }
 
-function open() { console.log('<div class="svg-container">') };
+function open(klass = '') { console.log(`<div class="svg-container ${klass}">`) };
 function close() { console.log('</div>') };
 
-
-const helloSvgs = ["Hi I'm ", ..."Ron Williams".split(''), ' !' ].map(titleSvg);
+const nameSvgs = "Ron Williams".split('').map((s, idx) => titleSvg(s, () => ` name name-${s.toLowerCase()}-${idx}`))
+const helloSvgs = [..."Hi I'm ".split('').map(s => titleSvg(s)), ...nameSvgs, ...' !'.split('').map(s => titleSvg(s))];
 const leadSvg = thinSvg("I'm better at web development than you!", 21);
 const tinySvg = normalSvg("(there is no real basis for this claim other than my own assertion but...)");
 const trueSvg = normalSvg("IT'S TRUE", 21);
@@ -50,7 +54,7 @@ const proofSvg = normalSvg("Need proof? Well look at this javascript! Doing thin
 const pewSvg = normalSvg("Pew pew pew! Rocket.");
 const moreSvg = normalSvg("More proof? Try typing my name, the konami code, or click anywhere.");
 
-open();
+open('header');
 console.log(helloSvgs.join(''));
 close();open();
 console.log(leadSvg);

@@ -167,11 +167,16 @@ function drawFace () {
     drawHalfCircle(center, 200, 200, false);
 }
 
+function randomColor() {
+    return _arrToColor(initialRandomColor())
+}
+
 module.exports = {
     drawFace,
     drawHalfCircle,
     drawCircle,
     drawCircleBasedOnX,
     drawRadiatingCircles,
-    drawFireWork
+    drawFireWork,
+    randomColor
 };
