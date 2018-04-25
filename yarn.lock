@@ -398,9 +398,9 @@ char-code-sequence@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/char-code-sequence/-/char-code-sequence-0.0.3.tgz#43cb70d1aac8ca89c65145263e3df8f545f7412c"
 
-char-code-sequence@^1.0.5:
+char-code-sequence@^1.0.6:
   version "1.0.6"
-  resolved "http://npm.intranet.1stdibs.com:4783/char-code-sequence/-/char-code-sequence-1.0.6.tgz#061d314af130ee3c3e4e5ade4edacfe02d1269bb"
+  resolved "https://registry.npmjs.org/char-code-sequence/-/char-code-sequence-1.0.6.tgz#625d87fb6aa0718a4dacf5ea92e4099b184d8665"
 
 chokidar@^1.7.0:
   version "1.7.0"

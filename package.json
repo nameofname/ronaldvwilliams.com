@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/nameofname/ronaldvwilliams.com",
   "dependencies": {
-    "char-code-sequence": "^1.0.5",
+    "char-code-sequence": "^1.0.6",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "konami-letters": "^0.0.4",
