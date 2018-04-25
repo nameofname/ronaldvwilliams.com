@@ -1,3 +1,5 @@
+const { randomColor } = require('./circle');
+
 function getTextNodes() {
     return document.querySelectorAll('.header svg')
     let node;
@@ -29,11 +31,13 @@ function explodeLetters() {
 
             node.style.left = newLeft
             node.style.top = newTop
+            node.firstElementChild.setAttribute('fill', randomColor())
         }, 100);
 
         setTimeout(() => {
             console.log('le node', node)
-            node.style.position = 'relative';
+            node.style.position = '';
+            node.firstElementChild.setAttribute('fill', '#333');
             clearInterval(intervals[idx]);
         }, 1000);
     });

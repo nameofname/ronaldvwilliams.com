@@ -8,10 +8,12 @@ const toThinSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/
 const toNormalSVG = require('text-to-svg').loadSync(path.join(__dirname, './fonts/helveticaneue-normal.otf'));
 
 const used = {};
-function titleSvg(string, mkClass = () => '') {
-    const idx = used[string] ? used[string] + 1 : 1;
-    used[string] = idx;
-    const className = mkClass();
+function titleSvg(string) {
+    const lower = string.toLowerCase();
+    const idx = used[lower] ? ++used[lower] : 1;
+    used[lower] = idx;
+    // console.log(lower, idx, used[lower], used)
+    const className = ` name name-${lower}-${idx}`;
     return toBoldSVG.getSVG(string, {
         x: 0, y: 0, fontSize: 35, anchor: 'top', 
         attributes: {
