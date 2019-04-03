@@ -52,7 +52,7 @@ const tinySvg = normalSvg("(there is no real basis for this claim other than my 
 const trueSvg = normalSvg("IT'S TRUE", 21);
 const proofSvg = normalSvg("Need proof? Well look at this javascript! Doing things!");
 const pewSvg = normalSvg("Pew pew pew! Rocket.");
-const moreSvg = normalSvg("More proof? Try typing my name, the konami code, or click anywhere.");
+const moreSvg = normalSvg("More proof? Try typing my name, or click anywhere.");
 
 open('header');
 console.log(helloSvgs.join(''));

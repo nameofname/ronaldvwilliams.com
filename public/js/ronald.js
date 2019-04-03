@@ -4,7 +4,7 @@
 const { drawRadiatingCircles, drawFireWork } = require('./circle');
 const danceHeader = require('./danceHeader');
 const moveSpaceShip = require('./moveSpaceShip');
-const { listenKeypress, konami } = require('char-code-sequence');
+const { listenKeypress } = require('char-code-sequence');
 
 document.addEventListener("DOMContentLoaded", function() {
 
